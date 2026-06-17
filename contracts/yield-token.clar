@@ -45,3 +45,14 @@
     (ok true)
   )
 )
+
+;; Mint yield tokens 1:1 with a vault deposit. Only callable by .vault.
+(define-public (vault-mint
+    (amount uint)
+    (recipient principal)
+  )
+  (begin
+    (asserts! (is-eq contract-caller .vault) ERR_NOT_VAULT)
+    (ft-mint? yt-splitsat amount recipient)
+  )
+)
