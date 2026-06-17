@@ -19,3 +19,16 @@
 
 (define-constant ERR_NOT_TOKEN_OWNER (err u101))
 (define-constant ERR_NOT_VAULT (err u102))
+
+;; data vars
+(define-data-var token-uri (optional (string-utf8 256)) none)
+
+;; public functions
+
+;; SIP-010: transfer
+(define-public (transfer
+    (amount uint)
+    (sender principal)
+    (recipient principal)
+    (memo (optional (buff 34)))
+  )
