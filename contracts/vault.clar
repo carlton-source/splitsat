@@ -104,6 +104,20 @@
   )
 )
 
+;; Burn PT 1:1 for the originally deposited STX, after maturity.
+(define-public (redeem-principal (amount uint))
+  (let ((recipient tx-sender))
+    (asserts! (> amount u0) ERR_ZERO_AMOUNT)
+    (asserts! (is-matured) ERR_BEFORE_MATURITY)
+    (try! (contract-call? .principal-token vault-burn amount recipient))
+    (var-set total-deposited (- (var-get total-deposited) amount))
+    (try! (as-contract? ((with-stx amount))
+      (try! (stx-transfer? amount current-contract recipient))
+    ))
+    (ok amount)
+  )
+)
+
 ;; Burn YT for a pro-rata share of the accrued sBTC yield pool, after maturity.
 (define-public (redeem-yield (amount uint))
   (let (
@@ -145,4 +159,12 @@
 
 (define-read-only (get-deposit-cap)
   (var-get deposit-cap)
+)
+
+(define-read-only (get-total-deposited)
+  (var-get total-deposited)
+)
+
+(define-read-only (is-matured)
+  (and (var-get maturity-set) (>= stacks-block-height (var-get maturity-height)))
 )
