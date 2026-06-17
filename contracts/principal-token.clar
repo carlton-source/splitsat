@@ -18,3 +18,6 @@
 
 (define-constant ERR_NOT_TOKEN_OWNER (err u101))
 (define-constant ERR_NOT_VAULT (err u102))
+
+(define-constant ERR_NOT_TOKEN_OWNER (err u101))
+(define-constant ERR_NOT_VAULT (err u102))
