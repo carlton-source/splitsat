@@ -84,3 +84,10 @@
     (asserts! (<= (+ (var-get total-deposited) amount) (var-get deposit-cap))
       ERR_DEPOSIT_CAP_EXCEEDED
     )
+    (try! (stx-transfer? amount tx-sender current-contract))
+    (try! (contract-call? .principal-token vault-mint amount tx-sender))
+    (try! (contract-call? .yield-token vault-mint amount tx-sender))
+    (var-set total-deposited (+ (var-get total-deposited) amount))
+    (ok amount)
+  )
+)
