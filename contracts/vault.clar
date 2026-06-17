@@ -32,3 +32,9 @@
 ;; Emergency pause: blocks new deposits and yield top-ups. Redemptions
 ;; (redeem-principal / redeem-yield) remain available even while paused.
 (define-data-var paused bool false)
+
+;; Total STX currently locked via deposit (reduced as principal is redeemed).
+;; Bounded by deposit-cap to limit at-risk funds during the unaudited
+;; mainnet launch.
+(define-data-var total-deposited uint u0)
+(define-data-var deposit-cap uint u1000000000) ;; default: 1,000 STX (in microstacks)
