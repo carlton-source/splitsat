@@ -28,3 +28,7 @@
 
 ;; Total sBTC PoX rewards accrued in the vault, claimable pro-rata by YT holders.
 (define-data-var btc-yield-pool uint u0)
+
+;; Emergency pause: blocks new deposits and yield top-ups. Redemptions
+;; (redeem-principal / redeem-yield) remain available even while paused.
+(define-data-var paused bool false)
