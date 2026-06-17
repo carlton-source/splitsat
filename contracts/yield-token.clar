@@ -8,3 +8,11 @@
 
 ;; traits
 (impl-trait 'ST1NXBK3K5YYMD6FD41MVNP3JS1GABZ8TRVX023PT.sip-010-trait-ft-standard.sip-010-trait)
+
+;; token definitions
+(define-fungible-token yt-splitsat)
+
+;; constants
+(define-constant TOKEN_NAME "SplitSat Yield Token")
+(define-constant TOKEN_SYMBOL "YT-SPLIT")
+(define-constant TOKEN_DECIMALS u6)
