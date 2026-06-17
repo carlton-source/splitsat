@@ -69,3 +69,10 @@
     (ft-burn? pt-splitsat amount owner)
   )
 )
+
+;; read only functions
+
+;; SIP-010: get-balance
+(define-read-only (get-balance (who principal))
+  (ok (ft-get-balance pt-splitsat who))
+)
