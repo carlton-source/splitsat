@@ -103,3 +103,10 @@
     (ok amount)
   )
 )
+
+;; Burn YT for a pro-rata share of the accrued sBTC yield pool, after maturity.
+(define-public (redeem-yield (amount uint))
+  (let (
+      (recipient tx-sender)
+      (yt-supply (unwrap-panic (contract-call? .yield-token get-total-supply)))
+    )
