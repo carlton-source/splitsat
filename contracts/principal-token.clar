@@ -19,9 +19,6 @@
 (define-constant ERR_NOT_TOKEN_OWNER (err u101))
 (define-constant ERR_NOT_VAULT (err u102))
 
-(define-constant ERR_NOT_TOKEN_OWNER (err u101))
-(define-constant ERR_NOT_VAULT (err u102))
-
 ;; data vars
 (define-data-var token-uri (optional (string-utf8 256)) none)
 
@@ -85,4 +82,19 @@
 ;; SIP-010: get-name
 (define-read-only (get-name)
   (ok TOKEN_NAME)
+)
+
+;; SIP-010: get-symbol
+(define-read-only (get-symbol)
+  (ok TOKEN_SYMBOL)
+)
+
+;; SIP-010: get-decimals
+(define-read-only (get-decimals)
+  (ok TOKEN_DECIMALS)
+)
+
+;; SIP-010: get-token-uri
+(define-read-only (get-token-uri)
+  (ok (var-get token-uri))
 )
