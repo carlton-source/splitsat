@@ -134,3 +134,7 @@
 (define-read-only (get-maturity-height)
   (var-get maturity-height)
 )
+
+(define-read-only (get-btc-yield-pool)
+  (var-get btc-yield-pool)
+)
