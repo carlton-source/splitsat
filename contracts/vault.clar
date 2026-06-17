@@ -74,3 +74,13 @@
     (ok new-cap)
   )
 )
+
+;; Deposit STX before maturity, receive equal amounts of PT and YT.
+(define-public (deposit (amount uint))
+  (begin
+    (asserts! (> amount u0) ERR_ZERO_AMOUNT)
+    (asserts! (not (var-get paused)) ERR_PAUSED)
+    (asserts! (not (is-matured)) ERR_AFTER_MATURITY)
+    (asserts! (<= (+ (var-get total-deposited) amount) (var-get deposit-cap))
+      ERR_DEPOSIT_CAP_EXCEEDED
+    )
