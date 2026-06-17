@@ -58,3 +58,14 @@
     (ft-mint? pt-splitsat amount recipient)
   )
 )
+
+;; Burn principal tokens on redemption. Only callable by .vault.
+(define-public (vault-burn
+    (amount uint)
+    (owner principal)
+  )
+  (begin
+    (asserts! (is-eq contract-caller .vault) ERR_NOT_VAULT)
+    (ft-burn? pt-splitsat amount owner)
+  )
+)
