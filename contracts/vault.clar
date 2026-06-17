@@ -52,3 +52,14 @@
     (ok true)
   )
 )
+
+;; Emergency pause switch. While paused, deposit and add-yield are blocked;
+;; redeem-principal and redeem-yield remain available so users can always
+;; exit.
+(define-public (set-paused (new-paused bool))
+  (begin
+    (asserts! (is-eq tx-sender CONTRACT_OWNER) ERR_OWNER_ONLY)
+    (var-set paused new-paused)
+    (ok new-paused)
+  )
+)
