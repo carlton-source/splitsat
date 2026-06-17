@@ -138,3 +138,7 @@
 (define-read-only (get-btc-yield-pool)
   (var-get btc-yield-pool)
 )
+
+(define-read-only (get-paused)
+  (var-get paused)
+)
