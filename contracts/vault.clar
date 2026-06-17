@@ -19,3 +19,9 @@
 (define-constant ERR_NO_YIELD_SUPPLY (err u206))
 (define-constant ERR_PAUSED (err u207))
 (define-constant ERR_DEPOSIT_CAP_EXCEEDED (err u208))
+
+;; data vars
+
+;; Stacks block height after which deposits close and redemptions open.
+(define-data-var maturity-height uint u0)
+(define-data-var maturity-set bool false)
