@@ -10,3 +10,8 @@
 
 ;; token definitions
 (define-fungible-token pt-splitsat)
+
+;; constants
+(define-constant TOKEN_NAME "SplitSat Principal Token")
+(define-constant TOKEN_SYMBOL "PT-SPLIT")
+(define-constant TOKEN_DECIMALS u6)
