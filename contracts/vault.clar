@@ -110,3 +110,21 @@
       (recipient tx-sender)
       (yt-supply (unwrap-panic (contract-call? .yield-token get-total-supply)))
     )
+    (asserts! (> amount u0) ERR_ZERO_AMOUNT)
+    (asserts! (is-matured) ERR_BEFORE_MATURITY)
+    (asserts! (> yt-supply u0) ERR_NO_YIELD_SUPPLY)
+    (let ((share (/ (* amount (var-get btc-yield-pool)) yt-supply)))
+      (try! (contract-call? .yield-token vault-burn amount recipient))
+      (var-set btc-yield-pool (- (var-get btc-yield-pool) share))
+      (if (> share u0)
+        (try! (as-contract? ((with-ft SBTC_TOKEN "sbtc-token" share))
+          (try! (contract-call? SBTC_TOKEN transfer share current-contract recipient
+            none
+          ))
+        ))
+        true
+      )
+      (ok share)
+    )
+  )
+)
