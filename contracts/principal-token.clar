@@ -81,3 +81,8 @@
 (define-read-only (get-total-supply)
   (ok (ft-get-supply pt-splitsat))
 )
+
+;; SIP-010: get-name
+(define-read-only (get-name)
+  (ok TOKEN_NAME)
+)
