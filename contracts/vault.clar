@@ -38,3 +38,17 @@
 ;; mainnet launch.
 (define-data-var total-deposited uint u0)
 (define-data-var deposit-cap uint u1000000000) ;; default: 1,000 STX (in microstacks)
+
+;; public functions
+
+;; One-time setup: lock in the maturity height for this vault epoch.
+(define-public (set-maturity-height (height uint))
+  (begin
+    (asserts! (is-eq tx-sender CONTRACT_OWNER) ERR_OWNER_ONLY)
+    (asserts! (not (var-get maturity-set)) ERR_MATURITY_ALREADY_SET)
+    (asserts! (> height stacks-block-height) ERR_INVALID_MATURITY)
+    (var-set maturity-height height)
+    (var-set maturity-set true)
+    (ok true)
+  )
+)
