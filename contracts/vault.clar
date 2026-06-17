@@ -63,3 +63,14 @@
     (ok new-paused)
   )
 )
+
+;; Adjust the maximum total STX that can be locked via deposit. Lets the
+;; owner raise the cap gradually as the unaudited contract proves itself.
+(define-public (set-deposit-cap (new-cap uint))
+  (begin
+    (asserts! (is-eq tx-sender CONTRACT_OWNER) ERR_OWNER_ONLY)
+    (asserts! (> new-cap u0) ERR_ZERO_AMOUNT)
+    (var-set deposit-cap new-cap)
+    (ok new-cap)
+  )
+)
