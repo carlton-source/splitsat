@@ -25,3 +25,6 @@
 ;; Stacks block height after which deposits close and redemptions open.
 (define-data-var maturity-height uint u0)
 (define-data-var maturity-set bool false)
+
+;; Total sBTC PoX rewards accrued in the vault, claimable pro-rata by YT holders.
+(define-data-var btc-yield-pool uint u0)
