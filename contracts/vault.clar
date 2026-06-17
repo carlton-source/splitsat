@@ -128,3 +128,9 @@
     )
   )
 )
+
+;; read only functions
+
+(define-read-only (get-maturity-height)
+  (var-get maturity-height)
+)
