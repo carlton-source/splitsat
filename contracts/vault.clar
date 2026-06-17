@@ -9,3 +9,13 @@
 ;; constants
 (define-constant CONTRACT_OWNER tx-sender)
 (define-constant SBTC_TOKEN 'SM3VDXK3WZZSA84XXFKAFAF15NNZX32CTSG82JFQ4.sbtc-token)
+
+(define-constant ERR_OWNER_ONLY (err u200))
+(define-constant ERR_MATURITY_ALREADY_SET (err u201))
+(define-constant ERR_INVALID_MATURITY (err u202))
+(define-constant ERR_BEFORE_MATURITY (err u203))
+(define-constant ERR_AFTER_MATURITY (err u204))
+(define-constant ERR_ZERO_AMOUNT (err u205))
+(define-constant ERR_NO_YIELD_SUPPLY (err u206))
+(define-constant ERR_PAUSED (err u207))
+(define-constant ERR_DEPOSIT_CAP_EXCEEDED (err u208))
