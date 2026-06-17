@@ -74,3 +74,28 @@
 (define-read-only (get-balance (who principal))
   (ok (ft-get-balance yt-splitsat who))
 )
+
+;; SIP-010: get-total-supply
+(define-read-only (get-total-supply)
+  (ok (ft-get-supply yt-splitsat))
+)
+
+;; SIP-010: get-name
+(define-read-only (get-name)
+  (ok TOKEN_NAME)
+)
+
+;; SIP-010: get-symbol
+(define-read-only (get-symbol)
+  (ok TOKEN_SYMBOL)
+)
+
+;; SIP-010: get-decimals
+(define-read-only (get-decimals)
+  (ok TOKEN_DECIMALS)
+)
+
+;; SIP-010: get-token-uri
+(define-read-only (get-token-uri)
+  (ok (var-get token-uri))
+)
