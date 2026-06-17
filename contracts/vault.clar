@@ -142,3 +142,7 @@
 (define-read-only (get-paused)
   (var-get paused)
 )
+
+(define-read-only (get-deposit-cap)
+  (var-get deposit-cap)
+)
