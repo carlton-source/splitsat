@@ -56,3 +56,14 @@
     (ft-mint? yt-splitsat amount recipient)
   )
 )
+
+;; Burn yield tokens on redemption. Only callable by .vault.
+(define-public (vault-burn
+    (amount uint)
+    (owner principal)
+  )
+  (begin
+    (asserts! (is-eq contract-caller .vault) ERR_NOT_VAULT)
+    (ft-burn? yt-splitsat amount owner)
+  )
+)
