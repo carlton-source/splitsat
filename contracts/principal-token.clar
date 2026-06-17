@@ -76,3 +76,8 @@
 (define-read-only (get-balance (who principal))
   (ok (ft-get-balance pt-splitsat who))
 )
+
+;; SIP-010: get-total-supply
+(define-read-only (get-total-supply)
+  (ok (ft-get-supply pt-splitsat))
+)
