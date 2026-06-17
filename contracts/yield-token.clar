@@ -16,3 +16,6 @@
 (define-constant TOKEN_NAME "SplitSat Yield Token")
 (define-constant TOKEN_SYMBOL "YT-SPLIT")
 (define-constant TOKEN_DECIMALS u6)
+
+(define-constant ERR_NOT_TOKEN_OWNER (err u101))
+(define-constant ERR_NOT_VAULT (err u102))
