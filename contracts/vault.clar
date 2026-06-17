@@ -91,3 +91,15 @@
     (ok amount)
   )
 )
+
+;; Owner deposits sBTC PoX staking rewards into the shared yield pool.
+(define-public (add-yield (amount uint))
+  (begin
+    (asserts! (is-eq tx-sender CONTRACT_OWNER) ERR_OWNER_ONLY)
+    (asserts! (> amount u0) ERR_ZERO_AMOUNT)
+    (asserts! (not (var-get paused)) ERR_PAUSED)
+    (try! (contract-call? SBTC_TOKEN transfer amount tx-sender current-contract none))
+    (var-set btc-yield-pool (+ (var-get btc-yield-pool) amount))
+    (ok amount)
+  )
+)
